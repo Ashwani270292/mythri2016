@@ -12,10 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jss.jssatenmythri2016_17.adapter.Event_Adapter;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
 import com.jss.jssatenmythri2016_17.adapter.Adapter;
 import com.jss.jssatenmythri2016_17.util.Common;
 import com.jss.jssatenmythri2016_17.R;
+import com.jss.jssatenmythri2016_17.util.Team_Getter_Setter;
 import com.jss.jssatenmythri2016_17.util.Text_Getter_Setter;
 
 import org.json.JSONException;
@@ -39,8 +41,9 @@ public class UserGames extends Fragment {
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
     String[] name;
+    ArrayList<Team_Getter_Setter> teamlist=new ArrayList<Team_Getter_Setter>();
     ArrayList<Text_Getter_Setter> list = new ArrayList<Text_Getter_Setter>();
-
+    Event_Adapter event_adapter;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -105,14 +108,17 @@ public class UserGames extends Fragment {
                             if (jsonObject1.getJSONArray("games").length() > 0) {
                                 for (int i = 0; i < jsonObject1.getJSONArray("games").length(); i++) {
                                     Text_Getter_Setter text_getter_setter = new Text_Getter_Setter(jsonObject1.getJSONArray("games").getString(i));
+                                    Team_Getter_Setter team_getter_setter=new Team_Getter_Setter(jsonObject1.getJSONArray("teams").getString(i));
+                                    teamlist.add(team_getter_setter);
                                     list.add(text_getter_setter);
                                 }
                                 recyclerView = (RecyclerView) view.findViewById(R.id.Recylerviewid);
                                 layoutManager = new LinearLayoutManager(getActivity());
                                 recyclerView.setLayoutManager(layoutManager);
                                 recyclerView.setHasFixedSize(true);
-                                adapter = new Adapter(list,getContext());
-                                recyclerView.setAdapter(adapter);
+                                event_adapter=new Event_Adapter(list,getContext());
+                                //adapter = new Adapter(list,getContext());
+                                recyclerView.setAdapter(event_adapter);
                             } else {
                                 Text_Getter_Setter text_getter_setter = new Text_Getter_Setter("You Are Not Registered in any of the games.\n What are you waiting for...Hurry Up!! Go And Get Registered.");
                                 list.add(text_getter_setter);
@@ -120,8 +126,9 @@ public class UserGames extends Fragment {
                                 layoutManager = new LinearLayoutManager(getActivity());
                                 recyclerView.setLayoutManager(layoutManager);
                                 recyclerView.setHasFixedSize(true);
-                                adapter = new Adapter(list,getContext());
-                                recyclerView.setAdapter(adapter);
+                                event_adapter=new Event_Adapter(list,getContext());
+                                //adapter = new Adapter(list,getContext());
+                                recyclerView.setAdapter(event_adapter);
                             }
                         }
                     } catch (JSONException e) {
@@ -137,8 +144,9 @@ public class UserGames extends Fragment {
                 layoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setHasFixedSize(true);
-                adapter = new Adapter(list,getContext());
-                recyclerView.setAdapter(adapter);
+                event_adapter=new Event_Adapter(list,getContext());
+                //adapter = new Adapter(list,getContext());
+                recyclerView.setAdapter(event_adapter);
             }
         }
     }

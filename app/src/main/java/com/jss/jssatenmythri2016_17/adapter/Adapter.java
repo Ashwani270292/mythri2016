@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.R;
+import com.jss.jssatenmythri2016_17.activity.Athelics_Listview;
 import com.jss.jssatenmythri2016_17.activity.GamedetailActivity;
 import com.jss.jssatenmythri2016_17.util.Text_Getter_Setter;
 
@@ -103,10 +104,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder >{
 
                     }break;
                     case "Athelitics":{
-                        
-                        Intent i=new Intent(context,GamedetailActivity.class);
-                        i.putExtra("title",vname);
-                        context.startActivity(i);
+
+                        Intent intent = new Intent(context, Athelics_Listview.class);
+                        context.startActivity(intent);
                     }break;
                     case "Shot Put":{
 

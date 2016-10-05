@@ -1,10 +1,18 @@
 package com.jss.jssatenmythri2016_17.activity.registeration;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,7 +27,7 @@ import com.jss.jssatenmythri2016_17.activity.LoginActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RegisterationActivity extends AppCompatActivity {
+public class RegistrationActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     final String LOGIN_KEY = "logged_in";
@@ -148,67 +156,67 @@ public class RegisterationActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, badminton_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, badminton_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 1:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, table_tennis_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, table_tennis_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 2:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, carrom_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, carrom_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 3:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, tugofwar_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, tugofwar_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 4:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, cricket_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, cricket_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 5:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, football_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, football_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 6:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, volleyball_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, volleyball_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 7:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, chess_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, chess_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 8:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, basketball_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, basketball_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 9:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, shotput_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, shotput_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 10:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, athelitics_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, athelitics_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 11:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, kabaddi_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, kabaddi_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
                     case 12:
-                        typesAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, fungames_types); //just to show none in the beginning
+                        typesAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, fungames_types); //just to show none in the beginning
                         typesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner_types.setAdapter(typesAdapter);
                         break;
@@ -228,12 +236,12 @@ public class RegisterationActivity extends AppCompatActivity {
                 String type = String.valueOf(spinner_types.getSelectedItem());
 
                 if (type.contains("Single") || type.equals("Doubles") || String.valueOf(spinner_games.getSelectedItem()).contains("Athelitics")) {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender_singles);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender_singles);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 } else if (type.contains("none") && (String.valueOf(spinner_games.getSelectedItem()).contains("Tug") ||
                         String.valueOf(spinner_games.getSelectedItem()).contains("Cricket"))) {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender_mixed);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender_mixed);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 } else if (type.contains("none") && (String.valueOf(spinner_games.getSelectedItem()).contains("Football") ||
@@ -241,19 +249,19 @@ public class RegisterationActivity extends AppCompatActivity {
                         String.valueOf(spinner_games.getSelectedItem()).contains("Basketball") ||
                         String.valueOf(spinner_games.getSelectedItem()).contains("Chess") ||
                         String.valueOf(spinner_games.getSelectedItem()).contains("Shot Put"))) {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender_singles);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender_singles);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 } else if (type.contains("5 On 5") || type.contains("3 On 3")) {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender_singles);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender_singles);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 } else if (type.contains("none")) {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 } else {
-                    genderAdapter = new ArrayAdapter(RegisterationActivity.this, R.layout.spinner_item, gender_mixed);
+                    genderAdapter = new ArrayAdapter(RegistrationActivity.this, R.layout.spinner_item, gender_mixed);
                     genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner_gender.setAdapter(genderAdapter);
                 }
@@ -299,7 +307,7 @@ public class RegisterationActivity extends AppCompatActivity {
                         (seleccted_games.equals("Fun Games"))
                         ) {
 
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender", selected_gender);
@@ -315,7 +323,7 @@ public class RegisterationActivity extends AppCompatActivity {
                         )
 
                 {
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender", selected_gender);
@@ -324,7 +332,7 @@ public class RegisterationActivity extends AppCompatActivity {
                 } else if (
                         (seleccted_games.equals("Athelitics") && selected_types.contains("4 x 100mts"))
                         ) {
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender", selected_gender);
@@ -333,7 +341,7 @@ public class RegisterationActivity extends AppCompatActivity {
                 } else if (seleccted_games.equals("Cricket") || seleccted_games.equals("Volleyball") ||
                         (seleccted_games.equals("Basketball") && selected_types.equals("3 On 3"))
                         || (seleccted_games.equals("Football"))) {
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender", selected_gender);
@@ -341,14 +349,14 @@ public class RegisterationActivity extends AppCompatActivity {
                     startActivity(i);
                 } else if (seleccted_games.equals("Kabaddi") ||
                         (seleccted_games.equals("Basketball") && selected_types.equals("5 On 5"))) {
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender",selected_gender);
                     i.putExtra("nos", 7);
                     startActivity(i);
                 } else if (seleccted_games.equals("Tug Of War") || (seleccted_games.equals("Football") && selected_gender.equals("Boy(s)"))) {
-                    Intent i = new Intent(RegisterationActivity.this, F8Activity.class);
+                    Intent i = new Intent(RegistrationActivity.this, F8Activity.class);
                     i.putExtra("game", seleccted_games);
                     i.putExtra("type", selected_types);
                     i.putExtra("gender",selected_gender);
@@ -381,15 +389,50 @@ public class RegisterationActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.logout) {
             logout();
+        }else if(item.getItemId() == R.id.calladmin){
+            onCall("9456001138");
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onCall(String number) {
+
+        if(Build.VERSION.SDK_INT >= 23) {
+            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
+
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.CALL_PHONE},
+                        123);
+            } else {
+                startActivity(new Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:"+number)));
+            }
+        }else{
+            startActivity(new Intent(Intent.ACTION_CALL).setData(Uri.parse("tel:"+number)));
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+
+            case 123:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                } else {
+                    Log.d("TAG", "Call Permission Not Granted");
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 
     private void logout() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(LOGIN_KEY, false);
         editor.apply();
-        startActivity(new Intent(RegisterationActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
         finish();
     }
 }

@@ -21,12 +21,12 @@ import com.jss.jssatenmythri2016_17.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    TextView unamet,unameid;
-    String loginname,loginid;
+    TextView unamet, unameid;
+    String loginname, loginid;
 
     //Shared Pref by Ashwani - whole app preference
     SharedPreferences sharedPreferences;
-    final String LOGIN_KEY="logged_in";
+    final String LOGIN_KEY = "logged_in";
     final String PREF_NAME = "mythri";
     String USERNAME = "useername";
     String MYTHRI_ID = "mythri_id";
@@ -38,19 +38,19 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Mythri 2016");
 
         sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-        loginname = sharedPreferences.getString(USERNAME,"JSS");
-        String id = sharedPreferences.getString(MYTHRI_ID,"mythri_dev_jss");
-        if(!id.equals("mythri_dev_jss")) {
-            loginid = "MYTHRI_16_"+id;
+        loginname = sharedPreferences.getString(USERNAME, "JSS");
+        String id = sharedPreferences.getString(MYTHRI_ID, "mythri_dev_jss");
+        if (!id.equals("mythri_dev_jss")) {
+            loginid = "MYTHRI_16_" + id;
         }
 
+        Toast.makeText(getApplicationContext(), loginname + " " + loginid, Toast.LENGTH_LONG).show();
 
         Fragment mf = new MainFragment();
-        android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-        transaction.beginTransaction().replace(R.id.main_frame,new About()).commit();
+        android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+        transaction.beginTransaction().replace(R.id.main_frame, new About()).commit();
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View header=navigationView.getHeaderView(0);
-        unamet= (TextView)header.findViewById(R.id.uname);
-        unameid= (TextView) header.findViewById(R.id.uid);
+        View header = navigationView.getHeaderView(0);
+        unamet = (TextView) header.findViewById(R.id.uname);
+        unameid = (TextView) header.findViewById(R.id.uid);
         unameid.setText(loginid);
         unamet.setText(loginname);
     }
@@ -74,32 +74,8 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            if(backCounter == 0){
-                backCounter++;
-                Toast.makeText(getApplicationContext(),"Press Back Again To Exit",Toast.LENGTH_SHORT).show();
-            }else {
-                super.onBackPressed();
-            }
+            super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
-        //noinspection SimplifiableIfStatement
-
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -108,23 +84,28 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if(id == R.id.usergames){
-            android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-            transaction.beginTransaction().replace(R.id.main_frame,new UserGames()).commit();
-        }else if (id == R.id.games) {
-            android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-            transaction.beginTransaction().replace(R.id.main_frame,new Games()).commit();
-        }else if (id == R.id.notification) {
-            android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-            transaction.beginTransaction().replace(R.id.main_frame,new Notification()).commit();
-        }else if (id == R.id.home) {
-            android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-            transaction.beginTransaction().replace(R.id.main_frame,new About()).commit();
-        }else if(id == R.id.logout){
+        if (id == R.id.usergames) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new UserGames()).commit();
+        } else if (id == R.id.games) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new Games()).commit();
+        } else if (id == R.id.notification) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new Notification()).commit();
+        } else if (id == R.id.home) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new About()).commit();
+        } else if (id == R.id.about_app) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new About_app()).commit();
+        } else if (id == R.id.logout) {
             clearPref();
-        }else if(id == R.id.support){
-            android.support.v4.app.FragmentManager transaction =getSupportFragmentManager();
-            transaction.beginTransaction().replace(R.id.main_frame,new Support()).commit();
+        } else if (id == R.id.support) {
+            android.support.v4.app.FragmentManager transaction = getSupportFragmentManager();
+            transaction.beginTransaction().replace(R.id.main_frame, new Support()).commit();
+        } else if (id == R.id.share) {
+            shareapp();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -134,12 +115,18 @@ public class MainActivity extends AppCompatActivity
 
     private void clearPref() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(LOGIN_KEY,false);
+        editor.putBoolean(LOGIN_KEY, false);
         editor.apply();
-        startActivity(new Intent(MainActivity.this,LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        startActivity(new Intent(MainActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
         finish();
     }
 
-    int backCounter = 0;
-
+    public void shareapp() {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, "JSS Mythri 2016-17 android app.\nClick on link to download: " +
+                "https://play.google.com/store/apps/details?id=" + this.getPackageName());
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Jss Mythri 2016-17");
+        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+    }
 }

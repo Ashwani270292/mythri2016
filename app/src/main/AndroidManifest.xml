@@ -43,10 +43,23 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
-            android:name=".activity.registeration.RegisterationActivity"
-            android:label="Registeration"
+            android:name=".activity.registeration.RegistrationActivity"
+            android:label="Registration"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.Athelics_Listview"
+            android:label="Athelitics"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".activity.registeration.Main_choice_Activity"
+            android:label="Registration"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.registeration.t_shirtActivity"
+            android:label="Registration"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

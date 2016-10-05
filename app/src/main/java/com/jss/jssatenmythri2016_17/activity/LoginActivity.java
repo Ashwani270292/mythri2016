@@ -15,7 +15,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.R;
-import com.jss.jssatenmythri2016_17.activity.registeration.RegisterationActivity;
+import com.jss.jssatenmythri2016_17.activity.registeration.Main_choice_Activity;
+import com.jss.jssatenmythri2016_17.activity.registeration.RegistrationActivity;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
 import com.jss.jssatenmythri2016_17.util.Common;
 
@@ -202,6 +203,7 @@ public class LoginActivity extends Activity {
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 } else if (lid == 3) {
                     isloggedin = true;
                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -210,9 +212,10 @@ public class LoginActivity extends Activity {
                     editor.putString(MYTHRI_ID, id);
                     editor.putBoolean(IS_REGISTERATION, true);
                     editor.apply();
-                    Intent i = new Intent(getApplicationContext(), RegisterationActivity.class);
+                    Intent i = new Intent(getApplicationContext(), Main_choice_Activity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
+                    finish();
                 } else if (lid == 2) {
                     Toast.makeText(LoginActivity.this, "We Will be providing support to you peoples in a short while...Thanks for being patient", Toast.LENGTH_SHORT).show();
                 }

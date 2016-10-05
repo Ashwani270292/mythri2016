@@ -2,12 +2,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.unnati.sport.Notification">
+    >
 
     <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="6dp">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Notification fragment" />
-
+        android:layout_height="wrap_content"
+        android:text="All notifications Caught up,You donot have any new notification.. :)"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textColor="#c00404"
+        android:textSize="23sp"/>
+    </RelativeLayout>
 </FrameLayout>

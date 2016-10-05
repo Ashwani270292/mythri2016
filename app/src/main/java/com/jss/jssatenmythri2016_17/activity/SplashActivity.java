@@ -16,10 +16,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.R;
-import com.jss.jssatenmythri2016_17.activity.registeration.RegisterationActivity;
+import com.jss.jssatenmythri2016_17.activity.registeration.Main_choice_Activity;
+import com.jss.jssatenmythri2016_17.activity.registeration.RegistrationActivity;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
 import com.jss.jssatenmythri2016_17.util.Common;
 
@@ -71,13 +71,11 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    private ProgressDialog m_ProgresDialog;
     private AccessServiceAPI m_AccessServiceAPI;
     public class TaskRegister extends AsyncTask<String, Void, Integer> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            m_ProgresDialog = ProgressDialog.show(SplashActivity.this, "Please wait", "Will take only a moment...", true);
         }
 
         @Override
@@ -98,33 +96,46 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Integer integer) {
             super.onPostExecute(integer);
-            m_ProgresDialog.dismiss();
+            if(integer != Common.RESULT_ERROR) {
+                try {
 
-            try {
-                PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-                int verCode = pInfo.versionCode;
-                if(verCode < integer){
-                    alertUpgrade();
-                }else{
-                    boolean isLoggedIn = pref.getBoolean(LOGIN_KEY,false);
-                    boolean isRegisteration = pref.getBoolean(IS_REGISTERATION,false);
-                    if(isLoggedIn && !isRegisteration) {
-                        //Open MainActivity
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        finish();
-                    }else if(isLoggedIn && isRegisteration){
-                        startActivity(new Intent(SplashActivity.this, RegisterationActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        finish();
+                    PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                    int verCode = pInfo.versionCode;
+                    if (verCode < integer) {
+                        alertUpgrade();
+                    } else {
+                        boolean isLoggedIn = pref.getBoolean(LOGIN_KEY, false);
+                        boolean isRegisteration = pref.getBoolean(IS_REGISTERATION, false);
+                        if (isLoggedIn && !isRegisteration) {
+                            //Open MainActivity
+                            startActivity(new Intent(SplashActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            finish();
+                        } else if (isLoggedIn && isRegisteration) {
+                            startActivity(new Intent(SplashActivity.this, Main_choice_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            finish();
+                        } else {
+                            //Open Login Screen
+                            startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            finish();
+                        }
                     }
-                    else {
-                        //Open Login Screen
-                        startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        finish();
-                    }
+
+                } catch (PackageManager.NameNotFoundException e) {
+                    e.printStackTrace();
+
                 }
-
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
+            }else{
+                final AlertDialog.Builder upgradeAlert = new AlertDialog.Builder(SplashActivity.this);
+                upgradeAlert.setTitle("Connection Problem!!");
+                upgradeAlert.setCancelable(false);
+                upgradeAlert.setMessage("This app requires internet connectivity. Please check your internet connection and restart the app.");
+                upgradeAlert.setPositiveButton("OK",new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                upgradeAlert.show();
             }
 
         }

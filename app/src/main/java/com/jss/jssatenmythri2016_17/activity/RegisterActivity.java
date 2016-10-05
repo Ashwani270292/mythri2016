@@ -133,7 +133,7 @@ public class RegisterActivity extends Activity{
                 setResult(1, i);
                 finish();
             } else if(integer == Common.RESULT_USER_EXISTS) {
-                Toast.makeText(RegisterActivity.this, "Username is exists!", Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterActivity.this, "You are already registered kindly contact Admin for support!", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(RegisterActivity.this, "Registration fail!", Toast.LENGTH_LONG).show();
             }

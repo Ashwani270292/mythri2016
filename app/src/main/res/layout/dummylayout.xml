@@ -17,8 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_title"
-            android:textStyle="bold"
-            android:padding="10dp"
             android:text="CRICKET"
             android:textColor="#de0707"
             android:layout_gravity="center"
@@ -39,13 +37,14 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:padding="12dp"
+
             android:textColor="@color/textColorHeadings"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/facultycoordinator0ne"
-            android:padding="12dp"
+            android:padding="5dp"
             android:orientation="horizontal">
 
 
@@ -59,11 +58,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/name1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:padding="10dp"
                     android:text="Mr. abc"
                     android:textSize="15dp" />
@@ -71,12 +76,14 @@
 
             </LinearLayout>
 
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/facultycoordinatorTwo"
-            android:padding="10dp"
+            android:textColor="#000000"
+            android:padding="5dp"
             android:orientation="horizontal">
 
 
@@ -90,11 +97,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
 
                 <TextView
                     android:id="@+id/name2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000000"
                     android:padding="10dp"
                     android:text="Mr. abc"
                     android:textSize="15dp" />
@@ -118,6 +132,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:id="@+id/studentcoordinator0ne"
             android:padding="10dp"
             android:orientation="horizontal">
@@ -131,18 +146,31 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentname1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:padding="5dp"
                     android:text="Mr. abc"
                     android:textSize="15dp" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mob No."
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentnumber1"
+                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -156,8 +184,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/studentcoordinatortwo"
+            android:textColor="#000000"
+            android:padding="5dp"
             android:visibility="visible"
-            android:padding="10dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -170,18 +199,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentname2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:padding="5dp"
                     android:text="Mr. abc"
                     android:textSize="15dp" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mob No."
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentnumber2"
                     android:layout_width="wrap_content"
+                    android:textColor="#000000"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="" />
@@ -192,8 +233,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:id="@+id/studentcoordinatorthree"
-            android:padding="10dp"
             android:visibility="visible"
             android:orientation="horizontal">
 
@@ -206,18 +247,31 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NAME"
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentname3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="Mr. abc"
+                    android:textColor="#000000"
                     android:textSize="15dp" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mob No."
+                    android:textColor="#b92c2c"
+                    android:textSize="15dp"/>
                 <TextView
                     android:id="@+id/studentnumber3"
+                    android:textColor="#000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
@@ -234,16 +288,16 @@
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
-
             android:textColor="#de0707"
             android:paddingTop="5dp"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#000000"
             android:id="@+id/type_detail"
             android:layout_gravity="center"
-            android:paddingTop="5dp"/>
+            android:padding="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -257,14 +311,20 @@
             android:textColor="#de0707"
 
             />
-        <TextView
+      <!--  <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:textSize="15dp"
             android:id="@+id/detail_rules"
 
-            android:padding="5dp"/>
+            android:padding="5dp"/>-->
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_rules"
+            android:padding="5dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -281,11 +341,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/detail_v_d"
             android:text="05/10/16 | Ab5"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:paddingTop="5dp"
             android:layout_gravity="center"
             android:layout_alignTop="@+id/d_v"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="20dp"
+           />
 
 
     </LinearLayout>

@@ -205,7 +205,7 @@ public class F8Activity extends AppCompatActivity {
             }
             else if (a==11){
                 Toast.makeText(F8Activity.this, "Registration Successfull", Toast.LENGTH_LONG).show();
-                Intent i= new Intent(F8Activity.this,RegisterationActivity.class);
+                Intent i= new Intent(F8Activity.this,RegistrationActivity.class);
                 startActivity(i);
                 finish();
 
