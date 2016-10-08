@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
     //Shared Pref by Ashwani - whole app preference
     SharedPreferences sharedPreferences;
     final String LOGIN_KEY = "logged_in";
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
     String USERNAME = "useername";
     String MYTHRI_ID = "mythri_id";
 
@@ -68,12 +68,18 @@ public class MainActivity extends AppCompatActivity
         unamet.setText(loginname);
     }
 
+    int bakcounter;
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if(bakcounter < 2){
+                Toast.makeText(getApplicationContext(),"Press Back again to exit",Toast.LENGTH_SHORT).show();
+                bakcounter++;
+                return;
+            }
             super.onBackPressed();
         }
     }

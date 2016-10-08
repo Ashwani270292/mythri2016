@@ -38,5 +38,14 @@ Button regisitration,tshirt;
         });
     }
 
-
+    int bakcounter;
+    @Override
+    public void onBackPressed() {
+        if(bakcounter < 2){
+            Toast.makeText(getApplicationContext(),"Press Back again to exit",Toast.LENGTH_SHORT).show();
+            bakcounter++;
+            return;
+        }
+        super.onBackPressed();
+    }
 }

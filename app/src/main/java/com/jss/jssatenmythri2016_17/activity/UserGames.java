@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.adapter.Event_Adapter;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
@@ -31,12 +32,11 @@ import java.util.Map;
  * Created by Sushant on 26-09-2016.
  */
 public class UserGames extends Fragment {
-
+public static Map<String,String> teamchecker=new HashMap<String,String>();
     SharedPreferences sharedPreferences;
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
     String MYTHRI_ID = "mythri_id";
     private AccessServiceAPI m_ServiceAccess;
-
     RecyclerView recyclerView;
     RecyclerView.Adapter adapter;
     RecyclerView.LayoutManager layoutManager;
@@ -111,6 +111,7 @@ public class UserGames extends Fragment {
                                     Team_Getter_Setter team_getter_setter=new Team_Getter_Setter(jsonObject1.getJSONArray("teams").getString(i));
                                     teamlist.add(team_getter_setter);
                                     list.add(text_getter_setter);
+                                    teamchecker.put(list.get(i).getName(),teamlist.get(i).getTeam());
                                 }
                                 recyclerView = (RecyclerView) view.findViewById(R.id.Recylerviewid);
                                 layoutManager = new LinearLayoutManager(getActivity());
@@ -120,7 +121,8 @@ public class UserGames extends Fragment {
                                 //adapter = new Adapter(list,getContext());
                                 recyclerView.setAdapter(event_adapter);
                             } else {
-                                Text_Getter_Setter text_getter_setter = new Text_Getter_Setter("You Are Not Registered in any of the games.\n What are you waiting for...Hurry Up!! Go And Get Registered.");
+                                Text_Getter_Setter text_getter_setter = new Text_Getter_Setter("You Are Not Registered in any of the games.\n " +
+                                        "What are you waiting for...Hurry Up!! Go And Get Registered.");
                                 list.add(text_getter_setter);
                                 recyclerView = (RecyclerView) view.findViewById(R.id.Recylerviewid);
                                 layoutManager = new LinearLayoutManager(getActivity());
@@ -145,10 +147,14 @@ public class UserGames extends Fragment {
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setHasFixedSize(true);
                 event_adapter=new Event_Adapter(list,getContext());
-                //adapter = new Adapter(list,getContext());
+                //adapter = new Adapter(combinedlist,getContext());
                 recyclerView.setAdapter(event_adapter);
             }
         }
     }
-
+     public String checker(String game){
+            String check=teamchecker.get(game);
+         return check;
+     // return "hello";
+     }
 }

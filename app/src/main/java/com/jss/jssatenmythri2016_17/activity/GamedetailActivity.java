@@ -487,8 +487,7 @@ public class GamedetailActivity extends AppCompatActivity {
             break;
             case "Athelitics": {
 
-                Intent intent = new Intent(getApplicationContext(), Athelics_Listview.class);
-                startActivity(intent);
+
 
             }
             break;
@@ -589,7 +588,7 @@ public class GamedetailActivity extends AppCompatActivity {
                 title.setText(data);
                 studentOneName.setText("Jugal Kishore(IT/4th yr)");
                 studentTwoName.setText("Girish Purushwani(CE/4th yr)");
-                facultyName.setText("Mr.Mehboobs Alam\nAP-CS");
+                facultyName.setText("Mr.Mehboob Alam\nAP-CS");
                 facultyName2.setText("Mrs.Preeti Jaidka\nAP-IT");
                 studentOneContact.setText("8505850131");
                 studentTwoContact.setText("8957050493");

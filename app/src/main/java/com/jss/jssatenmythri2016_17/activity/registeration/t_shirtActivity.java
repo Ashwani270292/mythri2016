@@ -28,7 +28,7 @@ import java.util.Map;
 public class t_shirtActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     final String LOGIN_KEY = "logged_in";
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
     Button submit;
 
     Spinner spinner_size;

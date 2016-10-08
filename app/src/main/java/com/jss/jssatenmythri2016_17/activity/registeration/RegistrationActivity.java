@@ -31,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     final String LOGIN_KEY = "logged_in";
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
 
     Button btnnext;
 

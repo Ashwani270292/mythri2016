@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.R;
 import com.jss.jssatenmythri2016_17.activity.Athelics_Listview;
+import com.jss.jssatenmythri2016_17.activity.Athelictics_detail;
 import com.jss.jssatenmythri2016_17.activity.GamedetailActivity;
 import com.jss.jssatenmythri2016_17.util.Text_Getter_Setter;
 
@@ -33,7 +34,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder >{
     public Viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview,parent,false);
         Viewholder viewholder=new Viewholder(view);
-
         return viewholder;
     }
 
@@ -96,7 +96,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder >{
                         i.putExtra("title",vname);
                         context.startActivity(i);
                     }break;
-                    case "Basketball":{
+                    case "basketball":{
                         
                         Intent i=new Intent(context,GamedetailActivity.class);
                         i.putExtra("title",vname);
@@ -104,9 +104,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder >{
 
                     }break;
                     case "Athelitics":{
-
                         Intent intent = new Intent(context, Athelics_Listview.class);
                         context.startActivity(intent);
+
                     }break;
                     case "Shot Put":{
 

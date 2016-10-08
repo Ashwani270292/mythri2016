@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jss.jssatenmythri2016_17.R;
+import com.jss.jssatenmythri2016_17.activity.coordinator.Coordinater_nav_activity;
 import com.jss.jssatenmythri2016_17.activity.registeration.Main_choice_Activity;
 import com.jss.jssatenmythri2016_17.activity.registeration.RegistrationActivity;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
@@ -47,7 +48,7 @@ public class LoginActivity extends Activity {
     //Pref by Ashwani - pref of whole app
     SharedPreferences sharedPreferences;
     final String LOGIN_KEY = "logged_in";
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
     final String IS_REGISTERATION = "registeration";
     String USERNAME = "useername";
     String MYTHRI_ID = "mythri_id";
@@ -198,7 +199,7 @@ public class LoginActivity extends Activity {
                     editor.putBoolean(LOGIN_KEY, isloggedin);
                     editor.putString(USERNAME, uname);
                     editor.putString(MYTHRI_ID, id);
-                    editor.putBoolean(IS_REGISTERATION, false);
+                    editor.putString(IS_REGISTERATION, "user");
                     editor.apply();
                     Intent i = new Intent(getApplicationContext(), MainActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -210,14 +211,24 @@ public class LoginActivity extends Activity {
                     editor.putBoolean(LOGIN_KEY, isloggedin);
                     editor.putString(USERNAME, uname);
                     editor.putString(MYTHRI_ID, id);
-                    editor.putBoolean(IS_REGISTERATION, true);
+                    editor.putString(IS_REGISTERATION, "register");
                     editor.apply();
                     Intent i = new Intent(getApplicationContext(), Main_choice_Activity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(i);
                     finish();
                 } else if (lid == 2) {
-                    Toast.makeText(LoginActivity.this, "We Will be providing support to you peoples in a short while...Thanks for being patient", Toast.LENGTH_SHORT).show();
+                    isloggedin = true;
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean(LOGIN_KEY, isloggedin);
+                    editor.putString(USERNAME, uname);
+                    editor.putString(MYTHRI_ID, id);
+                    editor.putString(IS_REGISTERATION, "coordinator");
+                    editor.apply();
+                    Intent i = new Intent(getApplicationContext(), Coordinater_nav_activity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
+                    finish();
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "Login fail", Toast.LENGTH_LONG).show();

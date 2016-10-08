@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.jss.jssatenmythri2016_17.R;
+import com.jss.jssatenmythri2016_17.activity.coordinator.Coordinater_nav_activity;
 import com.jss.jssatenmythri2016_17.activity.registeration.Main_choice_Activity;
 import com.jss.jssatenmythri2016_17.activity.registeration.RegistrationActivity;
 import com.jss.jssatenmythri2016_17.helper.AccessServiceAPI;
@@ -34,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
     final String LOGIN_KEY="logged_in";
     final String IS_REGISTERATION = "registeration";
     Animation animation;
-    final String PREF_NAME = "mythri";
+    final String PREF_NAME = "mythri-2016";
     ImageView logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,22 +99,25 @@ public class SplashActivity extends AppCompatActivity {
             super.onPostExecute(integer);
             if(integer != Common.RESULT_ERROR) {
                 try {
-
                     PackageInfo pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
                     int verCode = pInfo.versionCode;
                     if (verCode < integer) {
                         alertUpgrade();
                     } else {
                         boolean isLoggedIn = pref.getBoolean(LOGIN_KEY, false);
-                        boolean isRegisteration = pref.getBoolean(IS_REGISTERATION, false);
-                        if (isLoggedIn && !isRegisteration) {
+                        String t = pref.getString(IS_REGISTERATION,"");
+                        String type = pref.getString(IS_REGISTERATION, "user");
+                        if (isLoggedIn && t.equals("user")) {
                             //Open MainActivity
                             startActivity(new Intent(SplashActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             finish();
-                        } else if (isLoggedIn && isRegisteration) {
+                        } else if (isLoggedIn && type.equals("register")) {
                             startActivity(new Intent(SplashActivity.this, Main_choice_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             finish();
-                        } else {
+                        } else if(isLoggedIn && type.equals("coordinator")) {
+                            startActivity(new Intent(SplashActivity.this, Coordinater_nav_activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            finish();
+                        }else{
                             //Open Login Screen
                             startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             finish();
