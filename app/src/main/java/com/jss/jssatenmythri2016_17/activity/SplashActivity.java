@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
 
         logo.setAnimation(animation);
         logo.setVisibility(View.VISIBLE);
-        m_AccessServiceAPI = new AccessServiceAPI();
+//        m_AccessServiceAPI = new AccessServiceAPI();
         animation.start();
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -58,8 +58,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                new TaskRegister().execute();
-
+               switchScreen();
             }
 
             @Override
@@ -71,8 +70,29 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    public void switchScreen(){
+        boolean isLoggedIn = pref.getBoolean(LOGIN_KEY, false);
+        String t = pref.getString(IS_REGISTERATION,"");
+        String type = pref.getString(IS_REGISTERATION, "user");
+        if (isLoggedIn && t.equals("user")) {
+            //Open MainActivity
+            startActivity(new Intent(SplashActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        } else if (isLoggedIn && type.equals("register")) {
+            startActivity(new Intent(SplashActivity.this, Main_choice_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        } else if(isLoggedIn && type.equals("coordinator")) {
+            startActivity(new Intent(SplashActivity.this, Coordinater_nav_activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        }else{
+            //Open Login Screen
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        }
+    }
 
-    private AccessServiceAPI m_AccessServiceAPI;
+
+   /* private AccessServiceAPI m_AccessServiceAPI;
     public class TaskRegister extends AsyncTask<String, Void, Integer> {
         @Override
         protected void onPreExecute() {
@@ -104,24 +124,7 @@ public class SplashActivity extends AppCompatActivity {
                     if (verCode < integer) {
                         alertUpgrade();
                     } else {
-                        boolean isLoggedIn = pref.getBoolean(LOGIN_KEY, false);
-                        String t = pref.getString(IS_REGISTERATION,"");
-                        String type = pref.getString(IS_REGISTERATION, "user");
-                        if (isLoggedIn && t.equals("user")) {
-                            //Open MainActivity
-                            startActivity(new Intent(SplashActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            finish();
-                        } else if (isLoggedIn && type.equals("register")) {
-                            startActivity(new Intent(SplashActivity.this, Main_choice_Activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            finish();
-                        } else if(isLoggedIn && type.equals("coordinator")) {
-                            startActivity(new Intent(SplashActivity.this, Coordinater_nav_activity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            finish();
-                        }else{
-                            //Open Login Screen
-                            startActivity(new Intent(SplashActivity.this, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            finish();
-                        }
+
                     }
 
                 } catch (PackageManager.NameNotFoundException e) {
@@ -159,6 +162,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         upgradeAlert.show();
-    }
+    }*/
 }
 
